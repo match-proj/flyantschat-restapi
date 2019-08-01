@@ -7,6 +7,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -20,6 +21,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableHystrix                // 开启断路器
 @EnableHystrixDashboard
 @SpringBootApplication
+@ComponentScan({"com.match.flyantschat.context","com.match.common"})
 @EnableEurekaClient
 public class Application {
     public static void main(String[] args) {
