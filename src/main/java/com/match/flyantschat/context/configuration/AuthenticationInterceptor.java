@@ -1,5 +1,6 @@
 package com.match.flyantschat.context.configuration;
 
+import com.match.common.Microservice;
 import com.match.common.annotation.Anonymous;
 import com.match.common.context.User;
 import com.match.common.context.UserContext;
@@ -27,7 +28,6 @@ import java.util.Optional;
 public class AuthenticationInterceptor implements HandlerInterceptor {
 
 
-    public static final String HTTP_HEADER_AUTHORIZATION = "Authorization";
 
 
     @Autowired
@@ -38,7 +38,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object object) throws Exception {
 
         // 从 http 请求头中取出 token
-        String token = httpServletRequest.getHeader(HTTP_HEADER_AUTHORIZATION);
+        String token = httpServletRequest.getHeader(Microservice.Headers.HTTP_HEADER_AUTHORIZATION);
         // 如果不是映射到方法直接通过
         if (!(object instanceof HandlerMethod)) {
             return true;

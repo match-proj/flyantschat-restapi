@@ -9,6 +9,6 @@ public final class V1Version {
 
     public static final String VERSION_NAME = "v1.0";
     public static final String PKG = "com.match.flyantschat.web.v1";
-    public static final String MAPPING_PATH = "/v1.0/*";
+    public static final String MAPPING_PATH = "/api/v1.0/*";
 
 }

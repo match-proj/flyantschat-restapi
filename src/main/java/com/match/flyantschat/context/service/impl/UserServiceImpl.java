@@ -3,7 +3,7 @@ package com.match.flyantschat.context.service.impl;
 import com.match.common.context.User;
 import com.match.flyantschat.context.service.UserService;
 import com.match.user.client.UserClient;
-import com.match.user.client.bean.PeopleDTO;
+import com.match.user.client.bean.UserInfoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -24,18 +24,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<String> getPeopleIdByAccessToken(String token) {
-        return Optional.of("123token");
+        return Optional.ofNullable(userClient.getUserIdByAccessToken(token));
     }
 
     @Override
     public User getUserByPeopleId(String peopleId) {
-        PeopleDTO peopleDTO = userClient.findPeipleById(peopleId);
-        Assert.notNull(peopleDTO,"用户不存在");
+        UserInfoDTO people = userClient.getUser(peopleId);
+        Assert.notNull(people,"用户不存在");
         User user = new User();
-        user.setId(peopleDTO.getId());
-        user.setPhone(peopleDTO.getPhone());
-        user.setUsername(peopleDTO.getNickName());
-        user.setEncodedPrincipal(peopleDTO.getEncodedPrincipal());
+        user.setId(people.getId());
+        user.setPhone(people.getPhone());
+        user.setUsername(people.getNickName());
+        user.setEncodedPrincipal(people.getEncodedPrincipal());
         return user;
     }
 }

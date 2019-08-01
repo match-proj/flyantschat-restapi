@@ -18,7 +18,8 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(authenticationInterceptor).addPathPatterns("/**");    // 拦截所有请求，通过判断是否有 @Anonymous 注解 决定是否需要登录
+        // todo 稍后改成AOP的
+        registry.addInterceptor(authenticationInterceptor).addPathPatterns("/user/**");    // 拦截所有请求，通过判断是否有 @Anonymous 注解 决定是否需要登录
     }
 
 
