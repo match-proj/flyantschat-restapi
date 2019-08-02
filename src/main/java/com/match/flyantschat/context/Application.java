@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @EnableDiscoveryClient
-@EnableFeignClients(basePackages="com.match.user.client")
+@EnableFeignClients(basePackages="com.match.*.client")
 @EnableHystrix                // 开启断路器
 @EnableHystrixDashboard
 @SpringBootApplication

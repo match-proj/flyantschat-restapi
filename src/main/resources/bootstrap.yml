@@ -21,6 +21,7 @@ eureka:
       defaultZone: http://localhost:7001/eureka/
 
 #开启debug信息
-#logging:
-#  level:
+logging:
+  level:
 #    org.springframework: INFO
+    com.match.reply.client: debug

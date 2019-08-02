@@ -23,7 +23,7 @@ public class CORSFilter implements Filter {
         res.addHeader("Access-Control-Allow-Credentials", "true");
         res.addHeader("Access-Control-Allow-Origin", req.getHeader("Origin"));
         res.addHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
-        res.addHeader("Access-Control-Allow-Headers", "Content-Type,X-CAF-Authorization-Token,sessionToken,X-TOKEN,Authorization");
+        res.addHeader("Access-Control-Allow-Headers", "Content-Type,X-CAF-Authorization-Token,Authorization");
         if (((HttpServletRequest) request).getMethod().equals("OPTIONS")) {
             response.getWriter().println("ok");
             return;
