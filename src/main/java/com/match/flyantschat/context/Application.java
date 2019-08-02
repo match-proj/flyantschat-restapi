@@ -22,7 +22,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableHystrix                // 开启断路器
 @EnableHystrixDashboard
 @SpringBootApplication
-@ComponentScan({"com.match.flyantschat.context","com.match.common"})
+@ComponentScan({"com.match.flyantschat.context","com.match.*.client.fallback","com.match.common"})
 @EnableEurekaClient
 //@ServletComponentScan
 public class Application {

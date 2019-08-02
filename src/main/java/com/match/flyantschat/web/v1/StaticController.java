@@ -23,7 +23,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/static")
 @Slf4j
-public class AppStaticController {
+public class StaticController {
 
     @Autowired
     ObjectUpload objectUpload;
