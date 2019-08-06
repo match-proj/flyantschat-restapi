@@ -19,7 +19,7 @@
         <microservice-common-version>1.0.0</microservice-common-version>
         <microservice-user-version>1.0.0</microservice-user-version>
         <microservice-reply-version>1.0.0</microservice-reply-version>
-        <microservice-oim-version>1.0.0</microservice-oim-version>
+        <microservice-instant-messaging-version>1.0.0</microservice-instant-messaging-version>
     </properties>
 
     <dependencies>
@@ -40,8 +40,8 @@
         </dependency>
         <dependency>
             <groupId>com.match</groupId>
-            <artifactId>microservice-oim-client</artifactId>
-            <version>${microservice-oim-version}</version>
+            <artifactId>microservice-instant-messaging-client</artifactId>
+            <version>${microservice-instant-messaging-version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>

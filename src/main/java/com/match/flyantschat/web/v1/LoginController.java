@@ -2,6 +2,7 @@ package com.match.flyantschat.web.v1;
 
 import com.match.common.ResponseData;
 import com.match.common.annotation.Anonymous;
+import com.match.common.utils.JsonUtils;
 import com.match.user.client.LoginClient;
 import com.match.user.client.bean.LoginDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public class LoginController {
     @Anonymous
     @PostMapping("/login")
     public ResponseData<Object> login(@Valid @RequestBody LoginDTO loginReq){
+        System.out.println(JsonUtils.obj2json(loginReq));
         return loginClient.login(loginReq);
     };
 
