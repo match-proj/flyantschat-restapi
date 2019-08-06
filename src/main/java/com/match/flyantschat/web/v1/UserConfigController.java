@@ -18,18 +18,18 @@ import org.springframework.web.bind.annotation.*;
 public class UserConfigController {
 
     @Autowired
-    UserConfigClient peopleConfigService;
+    UserConfigClient configClient;
 
     @GetMapping
     public UserConfigDTO getPeopleConfig() {
         String peopleId = UserContext.getUser().getId();
-        return peopleConfigService.getPeopleConfig(peopleId);
+        return configClient.getPeopleConfig(peopleId);
     }
 
     @PutMapping
     public void updatePeopleConfig(@RequestBody UserConfigDTO peopleConfig) {
         String peopleId = UserContext.getUser().getId();
-        peopleConfigService.updatePeopleConfig(peopleId, peopleConfig);
+        configClient.updatePeopleConfig(peopleId, peopleConfig);
     }
 
 }

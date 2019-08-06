@@ -1,6 +1,7 @@
 package com.match.flyantschat.web.v1;
 
 import com.match.common.PageResult;
+import com.match.common.annotation.Anonymous;
 import com.match.common.context.UserContext;
 import com.match.user.client.UserClient;
 import com.match.user.client.bean.UserInfoDTO;
@@ -24,6 +25,12 @@ public class UserController {
     UserClient userClient;
 
 
+    @Anonymous
+    @GetMapping("/hello")
+    public String hello(){
+        return userClient.hello();
+    };
+
     @GetMapping("/info")
     public UserInfoDTO info(){
         String userId = UserContext.getUser().getId();
@@ -32,22 +39,26 @@ public class UserController {
 
     @PutMapping("/setPassword")
     public void setPassword(@RequestBody @Valid SettingPasswordDTO settingPassword){
-        userClient.setPassword(settingPassword);
+        String userId = UserContext.getUser().getId();
+        userClient.setPassword(userId,settingPassword);
     };
 
     @PutMapping("/updateUserInfo")
     public void updateUserInfo(@RequestBody UserInfoDTO userInfoDto){
-        userClient.updateUserInfo(userInfoDto);
+        String userId = UserContext.getUser().getId();
+        userClient.updateUserInfo(userId,userInfoDto);
     };
 
     @PutMapping("/editUserIntroduction")
     public void editUserIntroduction(String introduction){
-        userClient.editUserIntroduction(introduction);
+        String userId = UserContext.getUser().getId();
+        userClient.editUserIntroduction(userId,introduction);
     };
 
     @GetMapping("/assistUser")
     public void assistUser(String assistUserId){
-        userClient.assistUser(assistUserId);
+        String userId = UserContext.getUser().getId();
+        userClient.assistUser(userId,assistUserId);
     };
 
     @GetMapping("/{userId}/info")
@@ -59,7 +70,8 @@ public class UserController {
     public PageResult<SimpleUserInfoDTO> listSearch(@RequestParam(required = false,name = "page",defaultValue = "1") Integer page,
                                                     @RequestParam(required = false,name = "size",defaultValue = "10") Integer size,
                                                     @RequestParam(required = false,name = "word") String word){
-        return userClient.listSearch(page,size,word);
+        String userId = UserContext.getUser().getId();
+        return userClient.listSearch(userId,page,size,word);
     };
 
 }

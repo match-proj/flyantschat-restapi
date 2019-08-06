@@ -2,6 +2,7 @@ package com.match.flyantschat.web.v1;
 
 import com.match.common.ResponseData;
 import com.match.common.annotation.Anonymous;
+import com.match.common.context.UserContext;
 import com.match.common.utils.JsonUtils;
 import com.match.user.client.LoginClient;
 import com.match.user.client.bean.LoginDTO;
@@ -34,6 +35,7 @@ public class LoginController {
 
     @PostMapping("/logout")
     public ResponseData<Object> logout(){
-        return loginClient.logout();
+        String id = UserContext.getUser().getId();
+        return loginClient.logout(id);
     };
 }
