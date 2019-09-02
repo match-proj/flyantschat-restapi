@@ -19,6 +19,7 @@
         <microservice-common-version>1.0.0</microservice-common-version>
         <microservice-user-version>1.0.0</microservice-user-version>
         <microservice-reply-version>1.0.0</microservice-reply-version>
+        <microservice-expenses-version>1.0.0</microservice-expenses-version>
         <microservice-instant-messaging-version>1.0.0</microservice-instant-messaging-version>
     </properties>
 
@@ -43,6 +44,13 @@
             <artifactId>microservice-instant-messaging-client</artifactId>
             <version>${microservice-instant-messaging-version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.match</groupId>
+            <artifactId>microservice-expenses-client</artifactId>
+            <version>${microservice-expenses-version}</version>
+        </dependency>
+
+
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
