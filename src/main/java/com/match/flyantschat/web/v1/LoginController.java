@@ -31,11 +31,11 @@ public class LoginController {
     public ResponseData<Object> login(@Valid @RequestBody LoginDTO loginReq){
         System.out.println(JsonUtils.obj2json(loginReq));
         return loginClient.login(loginReq);
-    };
+    }
 
     @PostMapping("/logout")
     public ResponseData<Object> logout(){
         String id = UserContext.getUser().getId();
         return loginClient.logout(id);
-    };
+    }
 }
