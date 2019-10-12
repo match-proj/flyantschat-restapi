@@ -20,6 +20,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         // todo 稍后改成AOP的
         registry.addInterceptor(authenticationInterceptor).addPathPatterns("/user/**");    // 拦截所有请求，通过判断是否有 @Anonymous 注解 决定是否需要登录
+        registry.addInterceptor(authenticationInterceptor).addPathPatterns("/expenses/**");    // 拦截所有请求，通过判断是否有 @Anonymous 注解 决定是否需要登录
     }
 
 
