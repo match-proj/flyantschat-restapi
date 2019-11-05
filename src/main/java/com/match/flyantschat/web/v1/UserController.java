@@ -27,51 +27,59 @@ public class UserController {
 
     @Anonymous
     @GetMapping("/hello")
-    public String hello(){
+    public String hello() {
         return userClient.hello();
-    };
+    }
+
 
     @GetMapping("/info")
-    public UserInfoDTO info(){
+    public UserInfoDTO info() {
         String userId = UserContext.getUser().getId();
         return userClient.info(userId);
-    };
+    }
+
 
     @PutMapping("/setPassword")
-    public void setPassword(@RequestBody @Valid SettingPasswordDTO settingPassword){
+    public void setPassword(@RequestBody @Valid SettingPasswordDTO settingPassword) {
         String userId = UserContext.getUser().getId();
-        userClient.setPassword(userId,settingPassword);
-    };
+        userClient.setPassword(userId, settingPassword);
+    }
+
 
     @PutMapping("/updateUserInfo")
-    public void updateUserInfo(@RequestBody UserInfoDTO userInfoDto){
+    public void updateUserInfo(@RequestBody UserInfoDTO userInfoDto) {
         String userId = UserContext.getUser().getId();
-        userClient.updateUserInfo(userId,userInfoDto);
-    };
+        userClient.updateUserInfo(userId, userInfoDto);
+    }
+
 
     @PutMapping("/editUserIntroduction")
-    public void editUserIntroduction(String introduction){
+    public void editUserIntroduction(String introduction) {
         String userId = UserContext.getUser().getId();
-        userClient.editUserIntroduction(userId,introduction);
-    };
+        userClient.editUserIntroduction(userId, introduction);
+    }
+
 
     @GetMapping("/assistUser")
-    public void assistUser(String assistUserId){
+    public void assistUser(String assistUserId) {
         String userId = UserContext.getUser().getId();
-        userClient.assistUser(userId,assistUserId);
-    };
+        userClient.assistUser(userId, assistUserId);
+    }
+
 
     @GetMapping("/{userId}/info")
-    public UserInfoDTO getUser(@PathVariable("userId") String userId){
+    public UserInfoDTO getUser(@PathVariable("userId") String userId) {
         return userClient.getUser(userId);
-    };
+    }
+
 
     @GetMapping("/list/search")
-    public PageResult<SimpleUserInfoDTO> listSearch(@RequestParam(required = false,name = "page",defaultValue = "1") Integer page,
-                                                    @RequestParam(required = false,name = "size",defaultValue = "10") Integer size,
-                                                    @RequestParam(required = false,name = "word") String word){
+    public PageResult<SimpleUserInfoDTO> listSearch(@RequestParam(required = false, name = "page", defaultValue = "1") Integer page,
+                                                    @RequestParam(required = false, name = "size", defaultValue = "10") Integer size,
+                                                    @RequestParam(required = false, name = "word") String word) {
         String userId = UserContext.getUser().getId();
-        return userClient.listSearch(userId,page,size,word);
-    };
+        return userClient.listSearch(userId, page, size, word);
+    }
+
 
 }

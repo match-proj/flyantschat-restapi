@@ -46,8 +46,10 @@ public class StaticController {
 
     @PostMapping("/upload/base64Image")
     public String upload(@RequestParam("base64ImageFile") String base64ImageFile){
-        if (base64ImageFile == null) // 图像数据为空
+        // 图像数据为空
+        if (base64ImageFile == null) {
             return null;
+        }
         String suffixName = ".jpg";
         String newFileName = UUID.randomUUID().toString()+suffixName;
         BASE64Decoder decoder = new BASE64Decoder();
@@ -55,7 +57,8 @@ public class StaticController {
             // Base64解码
             byte[] b = decoder.decodeBuffer(base64ImageFile);
             for (int i = 0; i < b.length; ++i) {
-                if (b[i] < 0) {// 调整异常数据
+                // 调整异常数据
+                if (b[i] < 0) {
                     b[i] += 256;
                 }
             }
